@@ -45,15 +45,19 @@
 
 <form method="POST" action="">
     <center>
-    <H1 id=titre >Text sentiment analysis </H1> <br>
-    <p>Please write the text you want to analyse in here<p>  <br>
+    <H1 id=titre > Finding similar tweets </H1> <br>
+    <p>Please write text or paste a tweet and we will display the similar ones from our database<p>  <br>
     <textarea name="text-to-analyse"></textarea> <br><br>
     <input type = "submit">
     </center>
 </form> <br>
 <center>
 	<span class="result">
-		<div>{{ result }}</div>
+		<div>
+			{% autoescape false %}
+				{{ result }}
+			{% endautoescape %}
+		</div>
 	</span>
 </center>
 

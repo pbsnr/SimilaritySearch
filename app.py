@@ -38,7 +38,7 @@ def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
 
     for i in range(0, n):
         try:
-            tweets += (str(i+1) + cleanTweet[tweetIDs.index(result.index[i])] + "\n")
+            tweets += (str(i+1) + cleanTweet[tweetIDs.index(result.index[i])] + "<br><br>")
         except:
             pass
     print(tweets)
@@ -49,7 +49,7 @@ def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
 	
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    res = 'error'
+    res = ''
     with open('save.pickle', 'rb') as f:
         matrix = pickle.load(f)
     with open('cleantweet.pickle', 'rb') as f1:
