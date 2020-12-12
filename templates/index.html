@@ -1,0 +1,63 @@
+<HTML>
+<style type="text/css">
+	body{
+		background-color: #E3655B;
+	}
+	H1{
+		color: white;
+		font-family: sans-serif;
+	}
+	p{
+		color: white;
+		font-family: sans-serif;
+	}
+	textarea{
+		width: 30vw;
+		height: 10vw;
+		color: #E3655B;
+		border: 0;
+		border-radius: 25px;
+		padding: 20px;
+		box-shadow: inset 3px 3px 14px 0px rgba(0,0,0,0.75);
+	}
+	input{
+		background-color: white;
+		border: 0;
+		color: #E3655B;
+		border-radius: 25px;
+		padding: 5px;
+		box-shadow: 3px 3px 26px -8px rgba(0,0,0,0.75);
+	}
+	form{
+		margin-top: 20vh;
+	}
+	.result{
+		font-size: 15px;
+		color:white;
+/*		width: 20vw;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;*/
+	}
+</style>
+
+<BODY>
+
+<form method="POST" action="">
+    <center>
+    <H1 id=titre >Text sentiment analysis </H1> <br>
+    <p>Please write the text you want to analyse in here<p>  <br>
+    <textarea name="text-to-analyse"></textarea> <br><br>
+    <input type = "submit">
+    </center>
+</form> <br>
+<center>
+	<span class="result">
+		<div>{{ result }}</div>
+	</span>
+</center>
+
+
+
+</BODY>
+</HTML>
