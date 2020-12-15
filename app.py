@@ -17,10 +17,17 @@ import pickle
 app = Flask(__name__)
 
 cosine_similarity = lambda a, b: np.inner(a, b) / norm(a) * norm(b) if norm(a) != 0.0 and norm(b) != 0.0 else 0.0
+ps = PorterStemmer()
+with open('save.pickle', 'rb') as f:
+        matrix = pickle.load(f)
+with open('cleantweet.pickle', 'rb') as f1:
+    cleantweet = pickle.load(f1)
+with open('tweetids.pickle', 'rb') as f2:
+    tweetIds = pickle.load(f2)
 
 def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
 
-    ps = PorterStemmer()
+    
     cleanT = tweet.split()   # tokenize remaining document
     vec = [ps.stem(word) for word in cleanT] 
     tf_idf=tf_idf.append(pd.Series(name='TestTweet'))
@@ -41,7 +48,6 @@ def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
             tweets += (str(i+1) + cleanTweet[tweetIDs.index(result.index[i])] + "<br><br>")
         except:
             pass
-    print(tweets)
     return tweets
 
 
@@ -50,12 +56,7 @@ def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     res = ''
-    with open('save.pickle', 'rb') as f:
-        matrix = pickle.load(f)
-    with open('cleantweet.pickle', 'rb') as f1:
-        cleantweet = pickle.load(f1)
-    with open('tweetids.pickle', 'rb') as f2:
-        tweetIds = pickle.load(f2)
+    
     if request.method == 'POST':
         details = request.form
         res =  printTopSimilarTweets(matrix, details['text-to-analyse'], cleantweet, tweetIds)
