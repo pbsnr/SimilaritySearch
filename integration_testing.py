@@ -16,7 +16,7 @@ class IntegrationTesting(unittest.TestCase):
 		time.sleep(2)
 		elem = self.driver.find_elements(By.XPATH, '/html/body/form/center/p[2]/input')
 		elem[0].submit()
-		time.sleep(30)
+		time.sleep(60)
 		elem = self.driver.find_elements(By.XPATH, '/html/body/center/span/div')
 		self.assertEqual(elem[0].text[:10], output)
 		time.sleep(2)
