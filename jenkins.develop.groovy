@@ -3,6 +3,7 @@ def build_app(){
 }
 
 def test_app(){
+  sh 'sleep 60s'
   sh 'python test_app.py'
 }
 
