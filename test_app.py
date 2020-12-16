@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+pip install scikit-learn
+pip install pandas==0.20.3
+pip install numpy
+pip install nltk
 import unittest
 import get_data
-import pickle
 import time
 
 
@@ -27,3 +30,6 @@ class TestApp(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+    
+    
