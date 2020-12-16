@@ -13,6 +13,18 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 import pickle
+import time
+from prometheus_client import start_http_server
+from prometheus_client import Counter
+from prometheus_client import Gauge
+from prometheus_client import Summary
+from prometheus_client import Histogram
+
+REQUESTS = Counter('flask_app_requests_total', 'Times the app has been accessed')
+
+INPROGRESS = Gauge('flask_app_inprogress_gauge', 'Number of requests in progress')
+LATENCY_HIS = Histogram('flask_app_latency_histogram', 'Times needed for a request',
+		       buckets=[0.01,0.05, 0.1, 0.5, 1, 3, 6, 8])
 
 app = Flask(__name__)
 
@@ -107,14 +119,21 @@ def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
 	
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    REQUESTS.inc()
+    INPROGRESS.inc()
+    start = time.time()
     res = ''
     
     if request.method == 'POST':
         details = request.form
         res =  printTopSimilarTweets(matrix, details['text-to-analyse'], cleanTweet, tweetIDs)
     return render_template('index.html', result = res )
-
+    INPROGRESS.dec()
+    lat = time.time()
+    LATENCY_HIS.observe(lat - start)
+	
 if __name__ == '__main__':
+    start_http_server(8010)
     app.run(host='0.0.0.0')
 	
 	
