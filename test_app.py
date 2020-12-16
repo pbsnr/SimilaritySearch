@@ -1,7 +1,7 @@
 import unittest
 import app
 import pickle
-
+# -*- coding: utf-8 -*-
 
 
 class TestApp(unittest.TestCase):
