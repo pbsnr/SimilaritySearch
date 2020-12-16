@@ -1,9 +1,9 @@
 def build_app(){
-  sh 'docker-compose up --force-recreate -d'
+  sh 'docker-compose up -d'
 }
 
 def test_app(){
-  //sh 'python test_app.py'
+  sh 'python test_app.py'
 }
 
 def stress_test_app(){
