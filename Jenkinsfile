@@ -24,13 +24,13 @@ pipeline{
       }
     }
 
-    stage('Unit Testing'){
+    /*stage('Unit Testing'){
       steps{
         script{
           groovyfile.test_app()
         }
       }
-    }
+    }*/
 
     stage('Stress Testing'){
       steps{
