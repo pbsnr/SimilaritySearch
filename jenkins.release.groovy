@@ -7,9 +7,9 @@ def user_acceptance(){
   input "proceed with deployment to live ?"
 }
 
-def test_app(){
+/*def test_app(){
   sh 'python test_app.py'
-}
+}*/
 
 def stress_test_app(){
 }
