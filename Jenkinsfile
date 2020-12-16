@@ -14,19 +14,18 @@ pipeline{
     }
 
     
-    stage('Build Flask app'){
-      steps{
-        script{
-          groovyfile.build_app()
-        }
-      }
-    }
-
-   
     stage('Unit Testing'){
       steps{
         script{
           groovyfile.test_app()
+        }
+      }
+    }
+    
+    stage('Build Flask app'){
+      steps{
+        script{
+          groovyfile.build_app()
         }
       }
     }
