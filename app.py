@@ -3,20 +3,17 @@ import json
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pickle
 import pandas as pd
-
 import numpy as np
 from numpy.linalg import norm
-import pandas as pd
 import nltk
 nltk.download('punkt')
 from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
-import pickle
 
 app = Flask(__name__)
 
-n_tweets_to_read = 15000 # Choose the number of tweets to read
+n_tweets_to_read = 5000 # Choose the number of tweets to read
 
 cosine_similarity = lambda a, b: np.inner(a, b) / norm(a) * norm(b) if norm(a) != 0.0 and norm(b) != 0.0 else 0.0
 

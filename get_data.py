@@ -8,7 +8,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from sklearn.feature_extraction.text import CountVectorizer
 import pickle
 
-n_tweets_to_read = 15000 # Choose the number of tweets to read
+n_tweets_to_read = 5000 # Choose the number of tweets to read
 
 cosine_similarity = lambda a, b: np.inner(a, b) / norm(a) * norm(b) if norm(a) != 0.0 and norm(b) != 0.0 else 0.0
 
@@ -68,13 +68,28 @@ tdf.applymap(lambda x: 1.0 + np.log10(x) if x > 0.0 else 0.0) # log frequency we
 idf = pd.Series(np.log10(len(tweets)/np.array(documentFrequencies))) # Inverse document frequency
 tf_idf = tdf * idf.values
 
-print(tf_idf)
 
-with open('save.pickle', 'wb') as handle:
-    pickle.dump(tf_idf, handle, protocol=pickle.HIGHEST_PROTOCOL)
+def printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20):
+
     
-with open('cleantweet.pickle', 'wb') as handle:
-    pickle.dump(cleanTweet, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    cleanT = tweet.split()   # tokenize remaining document
+    vec = [ps.stem(word) for word in cleanT] 
+    tf_idf=tf_idf.append(pd.Series(name='TestTweet'))
+    tf_idf=tf_idf.fillna(0)
+    for i in vec:
+        try:
+            tf_idf.loc['TestTweet', i] += 1
+        except:
+            pass
+    a= tf_idf.loc['TestTweet']
+    result = tf_idf.apply(lambda row: cosine_similarity(a, row), 
+                          axis='columns').sort_values(ascending=False) 
     
-with open('tweetids.pickle', 'wb') as handle:
-    pickle.dump(tweetIDs, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    tweets = ''
+
+    for i in range(0, n):
+        try:
+            tweets += (str(i+1) + cleanTweet[tweetIDs.index(result.index[i])] + "<br><br>")
+        except:
+            pass
+    return tweets
