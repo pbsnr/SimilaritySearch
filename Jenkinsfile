@@ -16,7 +16,7 @@ pipeline{
     
     
     
-    stage('Build Flask app'){
+    stage('Build Flask app and Unit Tests'){
       steps{
         script{
           groovyfile.build_app()
