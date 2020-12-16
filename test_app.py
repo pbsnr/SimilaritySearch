@@ -9,8 +9,9 @@ class TestApp(unittest.TestCase):
     def test_add(self):
 
         res1 = """1"Via @washingtonpost by @costareports: “Trump says he is serious about 2016 bid, is hiring staff and delaying TV gig”http://www.washingtonpost.com/politics/trump-says-he-is-serious-about-2016-bid-is-hiring-staff-and-delaying-tv-gig/2015/02/25/4e9d3804-bd07-11e4-8668-4e7ba8439ca6_story.html …"<br><br>"""
-        res2 = """1“Obamacare Data Mismatch Could Leave Thousands Uninsured” http://www.usnews.com/news/articles/2014/09/16/obamacare-data-mismatch-could-leave-thousands-uninsured-at-election-time … ObamaCare is not working and has missed all targets.<br><br>2"Via @washingtonpost by @costareports: “Trump says he is serious about 2016 bid, is hiring staff and delaying TV gig”http://www.washingtonpost.com/politics/trump-says-he-is-serious-about-2016-bid-is-hiring-staff-and-delaying-tv-gig/2015/02/25/4e9d3804-bd07-11e4-8668-4e7ba8439ca6_story.html …"<br><br>3President Obama is under pressure from Democrats to undo his lie on ObamaCare. His problem is that such a move would end ObamaCare.<br><br>"""
+        res2 = """1Another health insurer is pulling back due to 'persistent financial losses on #Obamacare plans.' Only the beginning!http://www.nbcnews.com/business/business-news/aetna-pulls-back-obamacare-health-insurance-plans-2017-n631656 …<br><br>2"Via @washingtonpost by @costareports: “Trump says he is serious about 2016 bid, is hiring staff and delaying TV gig”http://www.washingtonpost.com/politics/trump-says-he-is-serious-about-2016-bid-is-hiring-staff-and-delaying-tv-gig/2015/02/25/4e9d3804-bd07-11e4-8668-4e7ba8439ca6_story.html …"<br><br>3"We will repeal & replace #Obamacare, which has caused soaring double-digit premium increases. It is a disaster!https://amp.twimg.com/v/ddb1eaf1-bdc5-44b3-b090-dc20494568f7 …"<br><br>"""
 
+        
         #with open('save.pickle', 'rb') as f:
         #    matrix = pickle.load(f)
         #with open('cleantweet.pickle', 'rb') as f1:
