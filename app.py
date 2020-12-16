@@ -16,7 +16,7 @@ import pickle
 
 app = Flask(__name__)
 
-n_tweets_to_read = 15000 # Choose the number of tweets to read
+n_tweets_to_read = 5000 # Choose the number of tweets to read
 
 cosine_similarity = lambda a, b: np.inner(a, b) / norm(a) * norm(b) if norm(a) != 0.0 and norm(b) != 0.0 else 0.0
 
