@@ -1,5 +1,5 @@
 def build_app(){
-  sh 'docker-compose up --detach'
+  sh 'docker-compose up --force-recreate -d'
 }
 
 def test_app(){
