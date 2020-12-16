@@ -3,7 +3,7 @@ def build_app(){
 }
 
 def test_app(){
-  sh 'python test_app.py'
+  //sh 'python test_app.py'
 }
 
 def stress_test_app(){
@@ -12,7 +12,7 @@ def stress_test_app(){
 }
 
 def down_app(){
-  sh 'docker-compose down'
+  //sh 'docker-compose down'
 }
 
 def release_app(){
