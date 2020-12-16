@@ -16,7 +16,7 @@ pipeline{
     
     
     
-    stage('Build Flask app'){
+    stage('Build Flask app and Unit Tests'){
       steps{
         script{
           groovyfile.build_app()
@@ -24,13 +24,13 @@ pipeline{
       }
     }
 
-    stage('Unit Testing'){
+    /*stage('Unit Testing'){
       steps{
         script{
           groovyfile.test_app()
         }
       }
-    }
+    }*/
 
     stage('Stress Testing'){
       steps{
