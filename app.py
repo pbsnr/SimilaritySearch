@@ -69,7 +69,7 @@ tdf = TermDocumentMatrix(tweetsProcessed, tweetIDs)
 # Document frequency
 documentFrequencies = []
 for index, series in tdf.iteritems(): 
-    documentFrequencies.append(len(series.nonzero()[0])) 
+    documentFrequencies.append(len(series.to_numpy().nonzero()[0])) 
 
 # TF-IDF weight
 tdf.applymap(lambda x: 1.0 + np.log10(x) if x > 0.0 else 0.0) # log frequency weight
