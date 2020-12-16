@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
-import app
-import pickle
-
+import get_data
+import time
 
 
 class TestApp(unittest.TestCase):
@@ -21,10 +20,12 @@ class TestApp(unittest.TestCase):
 
 
         #printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20)
-
-        self.assertEqual(app.printTopSimilarTweets(app.matrix, 'russia is leaded by putin', app.cleanTweet, app.tweetIDs, n=1), res1)
-        self.assertEqual(app.printTopSimilarTweets(app.matrix, 'obamacare is great', app.cleanTweet, app.tweetIDs, n=3), res2)        
+        self.assertEqual(get_data.printTopSimilarTweets(get_data.tf_idf, 'russia is leaded by putin', get_data.cleanTweet, get_data.tweetIDs, n=1), res1)
+        self.assertEqual(get_data.printTopSimilarTweets(get_data.tf_idf, 'obamacare is great', get_data.cleanTweet, get_data.tweetIDs, n=3), res2)        
 
 
 if __name__ == '__main__':
     unittest.main()
+
+    
+    
