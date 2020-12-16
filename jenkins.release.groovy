@@ -8,7 +8,7 @@ def user_acceptance(){
 }
 
 def test_app(){
-  sh 'python test_app.py'
+ // sh 'python test_app.py'
 }
 
 def stress_test_app(){
