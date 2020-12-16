@@ -1,6 +1,5 @@
 flask
 scikit-learn
-pandas
+pandas==0.20.3
 numpy
 nltk
---upgrade pandas
