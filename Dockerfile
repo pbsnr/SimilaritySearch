@@ -10,7 +10,7 @@ ENV FLASK_APP=app.py
 RUN pip install -r requirements.txt
 
 COPY . .
-COPY run2.sh
+COPY run2.sh run2.sh
 RUN chmod a+x run2.sh
 
 EXPOSE 5000
