@@ -2,7 +2,7 @@
 import unittest
 import app
 import pickle
-
+import time
 
 
 class TestApp(unittest.TestCase):
@@ -21,7 +21,7 @@ class TestApp(unittest.TestCase):
 
 
         #printTopSimilarTweets(tf_idf, tweet, cleanTweet, tweetIDs, n=20)
-
+        time.sleep(60)
         self.assertEqual(app.printTopSimilarTweets(app.matrix, 'russia is leaded by putin', app.cleanTweet, app.tweetIDs, n=1), res1)
         self.assertEqual(app.printTopSimilarTweets(app.matrix, 'obamacare is great', app.cleanTweet, app.tweetIDs, n=3), res2)        
 
