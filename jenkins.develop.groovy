@@ -1,5 +1,5 @@
 def build_app(){
-  sh 'sudo docker-compose up -d'
+  sh 'docker-compose up -d'
 }
 
 def test_app(){
@@ -12,7 +12,7 @@ def stress_test_app(){
 }
 
 def down_app(){
-  sh 'sudo docker-compose down'
+  sh 'docker-compose down'
 }
 
 def release_app(){
